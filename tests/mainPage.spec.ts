@@ -6,7 +6,6 @@ test.describe('Main page tests', () => {
   });
 
   test('Check visibility of elements of header navigation ', async ({ page }) => {
-    await page.goto('https://playwright.dev/');
     await expect.soft(page.getByRole('link', { name: 'Playwright logo Playwright' })).toBeVisible();
     await expect.soft(page.getByRole('link', { name: 'Docs' })).toBeVisible();
     await expect.soft(page.getByRole('link', { name: 'MCP', exact: true })).toBeVisible();
@@ -23,7 +22,6 @@ test.describe('Main page tests', () => {
   });
 
   test('Check names of elements of header navigation ', async ({ page }) => {
-    await page.goto('https://playwright.dev/');
     await expect
       .soft(page.getByRole('link', { name: 'Playwright logo Playwright' }))
       .toContainText('Playwright');
@@ -35,7 +33,6 @@ test.describe('Main page tests', () => {
   });
 
   test('Check attributes href elements of header navigation ', async ({ page }) => {
-    await page.goto('https://playwright.dev/');
     await expect
       .soft(page.getByRole('link', { name: 'Docs' }))
       .toHaveAttribute('href', '/docs/intro');
@@ -57,7 +54,6 @@ test.describe('Main page tests', () => {
   });
 
   test('Check functionality of light mode', async ({ page }) => {
-    await page.goto('https://playwright.dev/');
     await page.getByLabel('Switch between dark and light').click();
     await expect.soft(page.locator('html')).toHaveAttribute('data-theme', 'light');
     await page.getByLabel('Switch between dark and light').click();
@@ -65,7 +61,6 @@ test.describe('Main page tests', () => {
   });
 
   test('Check heading and text', async ({ page }) => {
-    await page.goto('https://playwright.dev/');
     await expect
       .soft(page.getByRole('heading', { name: 'Playwright enables reliable' }))
       .toBeVisible();
@@ -77,7 +72,6 @@ test.describe('Main page tests', () => {
   });
 
   test('Check get started button', async ({ page }) => {
-    await page.goto('https://playwright.dev/');
     await expect.soft(page.getByRole('link', { name: 'Get started' })).toBeVisible();
     await expect.soft(page.getByRole('link', { name: 'Get started' })).toContainText('Get started');
     await expect
