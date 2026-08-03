@@ -1,6 +1,10 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Main page tests', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('https://playwright.dev/');
+  });
+
   test('Check visibility of elements of header navigation ', async ({ page }) => {
     await page.goto('https://playwright.dev/');
     await expect.soft(page.getByRole('link', { name: 'Playwright logo Playwright' })).toBeVisible();
