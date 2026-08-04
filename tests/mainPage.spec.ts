@@ -123,4 +123,13 @@ test.describe('Main page tests', () => {
     await page.getByLabel('Switch between dark and light').click();
     await expect.soft(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   });
+
+  ['light', 'dark'].forEach((value) => {
+    test(`Check styles of active ${value} mode`, async ({ page }) => {
+      await page.evaluate((theme) => {
+        document.documentElement.setAttribute('data-theme', theme);
+      }, value);
+      await expect(page).toHaveScreenshot(`page-with-${value}-mode.png`);
+    });
+  });
 });
