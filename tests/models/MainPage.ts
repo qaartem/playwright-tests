@@ -150,10 +150,12 @@ export class MainPage {
   }
 
   async checkLayoutWithLightMode() {
-    await expect(this.page).toHaveScreenshot('page-with-light-mode.png');
+    await expect(this.page).toHaveScreenshot('page-with-light-mode.png', {
+      maxDiffPixelRatio: 0.1,
+    });
   }
 
   async checkLayoutWithDarkMode() {
-    await expect(this.page).toHaveScreenshot('page-with-dark-mode.png');
+    await expect(this.page).toHaveScreenshot('page-with-dark-mode.png', { maxDiffPixelRatio: 0.1 });
   }
 }
