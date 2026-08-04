@@ -106,7 +106,7 @@ export class MainPage {
   async checkElementText() {
     for (const { locator, name, text } of this.elements) {
       if (text) {
-        test.step(`Check text of ${name}`, async () => {
+        await test.step(`Check text of ${name}`, async () => {
           await expect.soft(locator(this.page)).toContainText(text);
         });
       }
@@ -128,13 +128,13 @@ export class MainPage {
   }
 
   async checkThemeAttribute(expectedTheme: string) {
-    test.step(`Check theme attribute is ${expectedTheme}`, async () => {
+    await test.step(`Check theme attribute is ${expectedTheme}`, async () => {
       await expect.soft(this.page.locator('html')).toHaveAttribute('data-theme', expectedTheme);
     });
   }
 
   async setLightMode() {
-    test.step(`Check theme attribute is light`, async () => {
+    await test.step(`Check theme attribute is light`, async () => {
       await this.page.evaluate(() => {
         document.documentElement.setAttribute('data-theme', 'light');
       });
@@ -142,7 +142,7 @@ export class MainPage {
   }
 
   async setDarkMode() {
-    test.step(`Check theme attribute is dark`, async () => {
+    await test.step(`Check theme attribute is dark`, async () => {
       await this.page.evaluate(() => {
         document.documentElement.setAttribute('data-theme', 'dark');
       });
